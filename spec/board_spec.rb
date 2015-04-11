@@ -17,4 +17,13 @@ describe Board do
 ...
 EOF
     end
+    
+    it 'starts with a grid of dots' do
+      @board.instance_variable_get('@board').must_equal [
+        ['.', '.', '.'],
+        ['.', '.', '.'],
+        ['.', '.', '.']
+      ]
+    end
+  end
 end
