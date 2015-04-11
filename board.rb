@@ -8,6 +8,6 @@ class Board
   end
   
   def render
-    puts "...\n" * 3
+    "...\n" * 3
   end
 end

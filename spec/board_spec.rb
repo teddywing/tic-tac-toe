@@ -7,11 +7,7 @@ describe Board do
   
   describe '#render' do
     it 'prints a grid' do
-      out, err = capture_io do
-        @board.render
-      end
-      
-      out.must_equal <<EOF
+      @board.render.must_equal <<EOF
 ...
 ...
 ...
