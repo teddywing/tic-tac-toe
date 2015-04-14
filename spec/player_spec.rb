@@ -16,7 +16,7 @@ describe Player do
   describe '#move' do
     before do
       board = Board.new
-      @player = Player.new('X', board)
+      @player = Player.new(Player::INSIGNIAS[:x], board)
     end
     
     it 'raises an ArgumentError given invalid coordinates' do
