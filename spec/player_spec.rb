@@ -3,6 +3,16 @@ require 'board'
 require 'player'
 
 describe Player do
+  describe 'insignias' do
+    it 'knows what an X insignia is' do
+      Player::INSIGNIAS[:x].must_equal 'X'
+    end
+    
+    it 'knows what an O insignia is' do
+      Player::INSIGNIAS[:o].must_equal 'O'
+    end
+  end
+  
   describe '#move' do
     before do
       board = Board.new
