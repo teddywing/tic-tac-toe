@@ -4,6 +4,8 @@ class Player
     :o => 'O'
   }
   
+  attr_reader :insignia
+  
   def initialize(insignia, board)
     @insignia = insignia
     @board = board

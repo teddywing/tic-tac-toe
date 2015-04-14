@@ -57,4 +57,7 @@ EOF
       @board.instance_variable_get(:@board)[1][2].must_equal value
     end
   end
+  
+  describe '#winner?' do
+  end
 end

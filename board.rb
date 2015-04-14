@@ -1,4 +1,6 @@
 class Board
+  attr_accessor :current_player
+  
   def initialize
     @board = [
       ['.', '.', '.'],
@@ -28,5 +30,8 @@ class Board
   
   def update_cell(row_index, column_index, value)
     @board[row_index][column_index] = value
+  end
+  
+  def winner?
   end
 end

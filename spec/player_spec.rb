@@ -13,6 +13,14 @@ describe Player do
     end
   end
   
+  describe '#insignia' do
+    it 'must be the correct insignia' do
+      insignia = Player::INSIGNIAS[:o]
+      player = Player.new(insignia, Board.new)
+      player.insignia.must_equal insignia
+    end
+  end
+  
   describe '#move' do
     before do
       @board = Board.new
