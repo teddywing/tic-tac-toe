@@ -23,4 +23,8 @@ class Board
     rescue
     end
   end
+  
+  def update_cell(row_index, column_index, value)
+    @board[row_index][column_index] = value
+  end
 end

@@ -36,4 +36,12 @@ EOF
       @board.transform_coordinates('booya,kacha').must_be_nil
     end
   end
+  
+  describe '#update_cell' do
+    it 'updates a given cell with a given value' do
+      value = 'X'
+      @board.update_cell(1, 2, value)
+      @board.instance_variable_get(:@board)[1][2].must_equal value
+    end
+  end
 end
