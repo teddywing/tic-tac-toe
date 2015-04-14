@@ -8,7 +8,9 @@ class Board
   end
   
   def render
-    "...\n" * 3
+    output = ''
+    @board.each {|row| output << row.join + "\n" }
+    output
   end
   
   # Raises an ArgumentError if integer conversion fails

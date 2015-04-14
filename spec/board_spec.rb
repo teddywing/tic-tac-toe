@@ -6,8 +6,16 @@ describe Board do
     @board = Board.new
   end
   
+  it 'starts with a grid of dots' do
+    @board.instance_variable_get('@board').must_equal [
+      ['.', '.', '.'],
+      ['.', '.', '.'],
+      ['.', '.', '.']
+    ]
+  end
+  
   describe '#render' do
-    it 'prints a grid' do
+    it 'must be a grid' do
       @board.render.must_equal <<EOF
 ...
 ...
@@ -15,12 +23,17 @@ describe Board do
 EOF
     end
     
-    it 'starts with a grid of dots' do
-      @board.instance_variable_get('@board').must_equal [
+    it 'must be the correct board' do
+      @board.instance_variable_set(:@board, [
+        ['.', 'X', 'O'],
+        ['X', '.', '.'],
         ['.', '.', '.'],
-        ['.', '.', '.'],
-        ['.', '.', '.']
-      ]
+      ])
+      @board.render.must_equal <<EOF
+.XO
+X..
+...
+EOF
     end
   end
   
