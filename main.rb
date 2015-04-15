@@ -5,8 +5,9 @@ board = Board.new
 player_1 = Player.new(Player::INSIGNIAS[:x], board)
 player_2 = Player.new(Player::INSIGNIAS[:o], board)
 board.current_player = player_1
+winner = nil
 
-until board.winner?
+until winner
   puts board.render
   puts
   
@@ -19,4 +20,12 @@ until board.winner?
   board.current_player.move(coordinates)
   
   board.current_player = board.current_player == player_1 ? player_2 : player_1
+  
+  puts '----'
+  
+  winner = board.winner?
+  if winner
+    puts board.render
+    puts "Player #{winner} wins"
+  end
 end
