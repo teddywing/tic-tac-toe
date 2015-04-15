@@ -59,5 +59,89 @@ EOF
   end
   
   describe '#winner?' do
+    before do
+      @board = Board.new
+    end
+    
+    it 'must be nil when no player has won' do
+      @board.winner?.must_be_nil
+    end
+    
+    it 'must be the winning player' do
+    end
+    
+    it 'counts horizontal matches as wins' do
+      @board.instance_variable_set(:@board, [
+        ['X', 'X', 'X'],
+        ['X', 'O', 'O'],
+        ['O', 'X', 'O'],
+      ])
+      @board.winner?.must_equal 'X'
+      
+      @board.instance_variable_set(:@board, [
+        ['X', 'O', 'X'],
+        ['O', 'O', 'O'],
+        ['O', 'X', 'X'],
+      ])
+      @board.winner?.must_equal 'O'
+      
+      @board.instance_variable_set(:@board, [
+        ['O', 'X', 'X'],
+        ['X', 'O', 'X'],
+        ['O', 'O', 'O'],
+      ])
+      @board.winner?.must_equal 'O'
+    end
+    
+    it 'counts vertical matches as wins' do
+      @board.instance_variable_set(:@board, [
+        ['X', 'O', 'X'],
+        ['X', 'O', 'O'],
+        ['X', 'X', 'O'],
+      ])
+      @board.winner?.must_equal 'X'
+      
+      @board.instance_variable_set(:@board, [
+        ['X', 'O', 'X'],
+        ['X', 'O', 'O'],
+        ['O', 'O', 'X'],
+      ])
+      @board.winner?.must_equal 'O'
+      
+      @board.instance_variable_set(:@board, [
+        ['O', 'X', 'X'],
+        ['X', 'O', 'X'],
+        ['O', 'O', 'X'],
+      ])
+      @board.winner?.must_equal 'X'
+    end
+    
+    it 'counts diagonal matches as wins' do
+      @board.instance_variable_set(:@board, [
+        ['O', 'X', 'X'],
+        ['X', 'O', 'O'],
+        ['O', 'X', 'O'],
+      ])
+      @board.winner?.must_equal 'O'
+      
+      @board.instance_variable_set(:@board, [
+        ['X', 'O', 'X'],
+        ['O', 'X', 'O'],
+        ['O', 'X', 'X'],
+      ])
+      @board.winner?.must_equal 'X'
+    end
+  end
+  
+  describe '#array_items_equal' do
+    it 'is true when all elements in the array are equal' do
+      Board.new.send(:array_items_equal,
+        ['X', 'X', 'X', 'X', 'X', 'X', 'X']).must_equal true
+    end
+    
+    it 'is false when any element is not equal to the rest' do
+      Board.new.send(:array_items_equal,
+        ['X', 'O', 'X', 'X', 'X', 'X', 'X']).must_equal false
+    end
   end
 end
